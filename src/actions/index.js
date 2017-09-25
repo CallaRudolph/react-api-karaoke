@@ -42,3 +42,12 @@ export function fetchSongId(title) {
     });
   };
 }
+
+export function fetchLyrics(title, artist, musicMatchId, localSongId, dispatch) {
+  return fetch("http://api.musixmatch.com/ws/1.1/track.lyrics.get?track_id=" + musicMatchId + "&apikey=bc6b2256711a5fcbd1081e4f496f7b12").then(
+    response => response.json(),
+    error => console.log("An error occurred.", error)
+  ).then(function(json) {
+    console.log("HEY WOW, A SECOND API RESPONSE!", json);
+  });
+}
