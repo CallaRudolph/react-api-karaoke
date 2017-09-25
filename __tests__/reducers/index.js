@@ -25,6 +25,17 @@ describe("Karaoke App", () => {
       .toEqual(defaultState.songsById);
     });
 
+    it("update state on request song", () => {
+      const action = actions.requestSong("crocodile rock");
+      const newObject = {
+        isFetching: true,
+        title: action.title,
+        songId: action.songId,
+      };
+      expect(songsById(defaultState.songsById, action)[action.songId])
+      .toEqual(newObject);
+    });
+    
   });
 
   describe("Select Song Reducer", () => {
