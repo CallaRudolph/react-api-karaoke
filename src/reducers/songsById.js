@@ -18,7 +18,6 @@ const songsById = (state = defaultState.songsById, action) => {
       newState = Object.assign({}, state, {
         [action.songId]: newSong
       });
-
       return newState;
     case types.RESTART_SONG:
       song = state[action.songId];
@@ -27,6 +26,16 @@ const songsById = (state = defaultState.songsById, action) => {
         currentPhrase: startPhrase,
         arrayPosition: 0
       });
+      newState = Object.assign({}, state, {
+        [action.songId]: newSong
+      });
+      return newState;
+    case types.REQUEST_SONG:
+      newSong = {
+        isFetching: true,
+        title: action.title,
+        songId: action.songId
+      };
       newState = Object.assign({}, state, {
         [action.songId]: newSong
       });
